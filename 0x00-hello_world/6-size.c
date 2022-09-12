@@ -1,4 +1,5 @@
 #include <stdio.h>
+
 /**
  * main - Printing string in put function
  *
@@ -6,16 +7,16 @@
  */
 int main(void)
 {
-	char u;
-	int x;
-	long e;
-	long long b;
-	float l;
+	char;
+	int;
+	long;
+	long long;
+	float;
 
-	printf("Size of a char: %d byte(s)\n", sizeof(u));
-	printf("Size of an int: %d byte(s)\n", sizeof(x));
-	printf("Size of a long int: %d byte(s)\n", sizeof(e));
-	printf("Size of a long long int: %d byte(s)\n", sizeof(b));
-	printf("Size of float: %d byte(s)\n", sizeof(l));
+	printf("Size of a char: %d byte(s)\n", sizeof(char));
+	printf("Size of an int: %d byte(s)\n", sizeof(int));
+	printf("Size of a long int: %d byte(s)\n", sizeof(long int));
+	printf("Size of a long long int: %d byte(s)\n", sizeof(long long int));
+	printf("Size of float: %d byte(s)\n", sizeof(float));
 	return (0);
 }
