@@ -1,12 +1,11 @@
 #ifndef MAIN_H
 #define MAIN_H
-
+#include <stdio.h>
 /**
-*File: main.h
-*
-* Desc: File containing prototype
+* void prototype()
+* int prototypes()
+* char prototypes()
 */
-
 char *_strcat(char *dest, char *src);
 char *_strncat(char *dest, char *src, int n);
 char *_strncpy(char *dest, char *src, int n);
@@ -21,3 +20,5 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r);
 void print_buffer(char *b, int size);
 int _putchar(char);
 
+
+#endif /*MAIN_H*/
