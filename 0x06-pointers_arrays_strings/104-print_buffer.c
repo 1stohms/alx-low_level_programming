@@ -3,7 +3,7 @@
 
 /**
  * print_line - prints a s bytes of a buffer
- * @c: buffer to print
+ * @c: buffer to prin
  * @s: bytes of buffer to print
  * @l: line of buffer to print
  *
@@ -58,4 +58,4 @@ void print_buffer(char *b, int size)
 	}
 	if (size == 0)
 		putchar('\n');
-
+}
