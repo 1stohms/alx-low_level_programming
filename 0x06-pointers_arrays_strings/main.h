@@ -1,11 +1,11 @@
 #ifndef MAIN_H
 #define MAIN_H
-#include <stdio.h>
 
 /**
- *void prototypes()
- *int prototypes()
- *char prototypes()
+ * File: main.h
+ * Auth: alx
+ * Desc: Prototype for all function
+ * 	used in 0x06.C - more pointers, arrays and strings
  */
 
 void reverse_array(int *a, int n);
