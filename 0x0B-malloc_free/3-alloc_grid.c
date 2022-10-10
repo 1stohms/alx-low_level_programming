@@ -1,43 +1,41 @@
 #include "main.h"
-/**
- * alloc_grid - allocates a grid, make space and free space
- * @width: takes in width of grid
- * @height: height of grid
- * Return: grid with freed spaces
- */
+#include <stdlib.h>
 
+/**
+ * alloc_grid - create a 2-dimensional array with each element set to 0
+ * @width: desired number of columns
+ * @height: desired number of rows
+ *
+ * Return: NULL if memory allocation fails or any argument is less than 1,
+ * otherwise return a pointer to the first element of the array.
+ */
 int **alloc_grid(int width, int height)
 {
-/*Declaring variables*/
-int **grid;
-int i, j;
+	int **matrix, row, column;
 
-if (width <= 0 || height <= 0)
-{
-return (NULL);
-}
+	if (width < 1 || height < 1)
+		return (NULL);
 
-grid = malloc(sizeof(int *) * height); /*malloc*/
+	matrix = (int **) malloc(sizeof(int *) * height);
 
-if (grid == NULL)
-{
-return (NULL);
-}
+	if (!matrix)
+		return (NULL);
 
-for (i = 0; i < height; i++)
-{
-grid[i] = malloc(sizeof(int) * width);
-if (grid[i] == NULL)
-{
-for (i = i - 1; i >= 0; i--)
-{
-free(grid[i]);
-}
-free(grid);
-return (NULL);
-}
-}
-for (i = 0; j < width; j++)
-grid[i][j] = 0;
-return (grid);
+	for (row = 0; row < height; ++row)
+	{
+		matrix[row] = (int *) malloc(sizeof(int) * width);
+
+		if (!matrix[row])
+		{
+			while (--row > -1)
+				free(matrix[row]);
+			free(matrix);
+			return (NULL);
+		}
+
+		for (column = 0; column < width; ++column)
+			matrix[row][column] = 0;
+	}
+
+	return (matrix);
 }
