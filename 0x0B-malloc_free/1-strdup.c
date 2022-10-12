@@ -1,52 +1,45 @@
 #include "main.h"
 #include <stdlib.h>
-#include <stdio.h>
-
 /**
- * _strlen - return length of a string
- * @s: char type
- * Return:  length of string
- */
-
-int _strlen(char *s)
-{
-	int a;
-
-	for (a = 0; s[a] != '\0'; a++)
-	{
-
-	}
-	return (a);
-}
-
-/**
- * _strdup - function to return pointer to string
- * @str: pointer to string array input
- * Return: pointer to string created
- */
-
+  *_strdup - returns a pointer to a newly alloctaed
+  *space in memory which contains a copy of the string
+  *passed.
+  *@str: pointer to string being duplicated.
+  *
+  *Return: NULL if str is NULL.
+  *pointer to duplicated string on success.
+  *NULL if memory was insufficient.
+  */
 char *_strdup(char *str)
 {
-	char *ptr;
-	int size;
-	int x;
+	char *nstr;
+	unsigned int len, i;
 
+	/* check is str is null */
 	if (str == NULL)
 	{
 		return (NULL);
 	}
-	size = _strlen(str) + 1;
-	ptr = malloc(size * sizeof(char));
 
-	x = 0;
-	while (x < size)
+	len = 0;
+	while (str[len] != '\0')
 	{
-		if (ptr == NULL)
-		{
-			return (NULL);
-		}
-		ptr[x] = str[x];
-		x++;
+		len++;
 	}
-	return (ptr);
+
+	nstr = malloc(sizeof(char) * (len + 1));
+
+	/*check if malloc was successful*/
+	if (nstr == NULL)
+	{
+		return (NULL);
+	}
+
+	for (i = 0; i < len; i++)
+	{
+		nstr[i] = str[i];
+	}
+	nstr[len] = '\0';
+	return (nstr);
+
 }
