@@ -1,45 +1,42 @@
 #include "main.h"
 #include <stdlib.h>
 /**
-  *_strdup - returns a pointer to a newly alloctaed
-  *space in memory which contains a copy of the string
-  *passed.
-  *@str: pointer to string being duplicated.
-  *
-  *Return: NULL if str is NULL.
-  *pointer to duplicated string on success.
-  *NULL if memory was insufficient.
+  *argstostr - concatenates all arguments of the program.
+  *@ac: argument count.
+  *@av: pointer to array of size ac.
+  *Return: NULL if ac == 0 or av == null, Pointer to new string.
+  *NULL on fail.
   */
-char *_strdup(char *str)
+char *argstostr(int ac, char **av)
 {
-	char *nstr;
-	unsigned int len, i;
+	int i, n, k = 0, len = 0;
+	char *str;
 
-	/* check is str is null */
+	if (ac == 0 || av == NULL)
+		return (NULL);
+
+	for (i = 0; i < ac; i++)
+	{
+		for (n = 0; av[i][n]; n++)
+			len++;
+	}
+	len += ac;
+
+	str = malloc(sizeof(char) * len + 1);
 	if (str == NULL)
-	{
 		return (NULL);
-	}
 
-	len = 0;
-	while (str[len] != '\0')
+	for (i = 0; i < ac; i++)
 	{
-		len++;
+		for (n = 0; av[i][n]; n++)
+		{
+			str[k] = av[i][n];
+			k++;
+		}
+		if (str[k] == '\0')
+		{
+			str[k++] = '\n';
+		}
 	}
-
-	nstr = malloc(sizeof(char) * (len + 1));
-
-	/*check if malloc was successful*/
-	if (nstr == NULL)
-	{
-		return (NULL);
-	}
-
-	for (i = 0; i < len; i++)
-	{
-		nstr[i] = str[i];
-	}
-	nstr[len] = '\0';
-	return (nstr);
-
+	return (str);
 }
