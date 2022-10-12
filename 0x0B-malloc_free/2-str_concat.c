@@ -1,53 +1,43 @@
 #include "main.h"
 #include <stdlib.h>
-
+#include <stdio.h>
 /**
- * str_concat - concatenate two strings
- * @s1: a pointer to the first string
- * @s2: a pointer to the second string
+ * str_concat - concatenates 2 strings
  *
- * Return: NULL if memory allocation fails,
- * otherwise a pointer to a the new string
+ * @s1: first string
+ * @s2: string to add to end of of first string
+ *
+ * Return: pointer to newly allocated string concatenation
  */
 char *str_concat(char *s1, char *s2)
 {
-	unsigned int len1 = 0;
-	unsigned int len2 = 0;
-	char *cat;
+	unsigned int size1 = 0, size2 = 0;
+	char *ptr, *ret;
 
+	ptr = s1;
 	if (s1)
-	{
-		while (s1[len1])
-			++len1;
-	}
+		while (*ptr++)
+			size1++;
 	else
-	{
 		s1 = "";
-	}
+
+	ptr = s2;
 	if (s2)
-	{
-		while (s2[len2])
-			++len2;
-	}
+		while (*ptr++)
+			size2++;
 	else
-	{
 		s2 = "";
-	}
 
-	cat = (char *) malloc(sizeof(char) * (len1 + len2 + 1));
-
-	if (!cat)
+	ret = malloc(size1 + size2 + 1);
+	if (!ret)
 		return (NULL);
-	if (s1)
-	{
-		for (len1 = 0; s1[len1]; ++len1)
-			cat[len1] = s1[len1];
-	}
-	if (s2)
-	{
-		for (len2 = 0; s2[len2]; ++len2)
-			cat[len1 + len2] = s2[len2];
-	}
-	cat[len1 + len2] = '\0';
-	return (cat);
+
+	ptr = ret;
+	while (*s1)
+		*ptr++ = *s1++;
+	while (*s2)
+		*ptr++ = *s2++;
+	*ptr = 0;
+
+	return (ret);
 }
