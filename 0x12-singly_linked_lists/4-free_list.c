@@ -1,19 +1,20 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include "lists.h"
-
 /**
  * free_list - frees a list
- * @head: points to the beginnin of list
- * Return: void
+ * @head: head var
  */
 void free_list(list_t *head)
 {
-	list_t *phree;
+	list_t *temporary;
 
-	while (head)
+	while (head != NULL)
 	{
-		phree = head;
-		head = head->next;
-		free(phree->str);
-		free(phree);
+		temporary = head->next;
+		free(head->str);
+		free(head);
+		head = temporary;
 	}
 }
