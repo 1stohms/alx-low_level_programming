@@ -1,34 +1,68 @@
 #include "main.h"
-
 /**
- * create_file - Creates a file.
- * @filename: A pointer to the name of the file to create.
- * @text_content: A pointer to a string to write to the file.
- *
- * Return: If the function fails - -1.
- *         Otherwise - 1.
+ *_strlen - count array
+ *@s: array of elements
+ *Return: 1
  */
 
-int create_file(const char *filename, char *text_content)
+int _strlen(char *s)
 {
-	int o, w, len = 0;
+unsigned int i;
 
-	if (filename == NULL)
-		return (-1);
+i = 0;
+while (s[i] != '\0') /*count character of string*/
+{
+i++;
+}
 
-	if (text_content != NULL)
-	{
-		for (len = 0; text_content[len];)
-			len++;
-	}
+return (i);
+}
 
-	o = open(filename, O_CREAT | O_RDWR | O_TRUNC, 0600);
-	w = write(o, text_content, len);
+/**
+ *_strcpy - copy arrays
+ *@src: array of elements
+ *@dest: dest array
+ *Return: dest
+ */
 
-	if (o == -1 || w == -1)
-		return (-1);
+char *_strcpy(char *dest, char *src)
+{
+int i = 0;
 
-	close(o);
+while (src[i] != '\0')
+{
+dest[i] = src[i];
+i++;
+}
+dest[i] = '\0';
 
-	return (1);
+return (dest);
+}
+
+/**
+ *_strdup - array for prints a string
+ *@str: array of elements
+ *Return: pointer
+ */
+
+char *_strdup(char *str)
+{
+char *dst;
+unsigned int size;
+
+if (str == 0)
+{
+return (NULL);
+}
+
+size = _strlen(str) + 1;
+
+dst = (char *) malloc(size *sizeof(char));
+
+if (dst == 0)
+{
+return (NULL);
+}
+_strcpy(dst, str);
+return (dst);
 }
