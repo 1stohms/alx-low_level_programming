@@ -1,20 +1,13 @@
-#include "main.h"
 /**
-* *_strcat - concatenates 2 strings
-* @dest: the target string
-* @src: what is being added
-* Return: returns the dest
-*/
-char *_strcat(char *dest, char *src)
+ * _isupper - prints if the characters are lowercase or not
+ * 0 for lowercase 1 for uppercase
+ * @c: the character being tested
+ * Return: 0 for lowercase, 1 for uppercase
+ */
+int _isupper(int c)
 {
-	int x, y;
-
-	for (x = 0; dest[x] != '\0'; x++)
-		;
-	for (y = 0; src[y] != '\0'; y++)
-	{
-		dest[x + y] = src[y];
-	}
-	dest[x + y] = '\0';
-	return (dest);
+	if ('A' <= c && c <= 'Z')
+		return (1);
+	else
+		return (0);
 }
